@@ -3,11 +3,22 @@ import { HTMLAttributes, ReactNode } from 'react'
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode
   className?: string
+  value?: string
 }
 
-export function Button({ children, className = 'bg-slate-400' }: ButtonProps) {
+export function Button({
+  children,
+  className = 'bg-[#333333]',
+  value = children as string,
+}: ButtonProps) {
   return (
-    <button className={`rounded-full text-white ${className ? className : ''}`}>
+    <button
+      value={value}
+      onClick={() => console.log(value)}
+      className={`rounded-full text-2xl font-medium text-white ${
+        className ? className : ''
+      }`}
+    >
       {children}
     </button>
   )
